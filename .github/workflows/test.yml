@@ -8,8 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup MinGW
-        run: |
-          choco install mingw --version 9.3.0 --params="'target=i686-posix-sjlj'"
+        uses: actions/setup-mingw@v1
+        with:
+          version: '9.3.0'
+          architecture: 'i686-posix-sjlj'
       - name: Compile Main.c
         run: |
           gcc -v
