@@ -16,9 +16,11 @@ jobs:
         run: |
           7z x winlibs-mingw-w64-i686-9.3.0-7.0.0-r3-sjlj.7z
           ls
-          cd winlibs-mingw-w64-i686-9.3.0-7.0.0-r3-sjlj
+          cd mingw32
           ls 
-          
+      - name: Set Default Compiler
+        run: |
+          setx /M PATH "%PATH%;$" + {{ github.workspace }} + "\mingw32\bin"
       - name: Compile Main.c
         run: |
           gcc -v
