@@ -10,8 +10,6 @@ jobs:
       - name: Setup MinGW
         run: |
           choco install mingw
-          with:
-            version: '9.3.0'
       - name: Compile Main.c
         run: gcc -o main.exe main.c
       - name: Package Main.exe
