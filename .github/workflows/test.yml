@@ -8,9 +8,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Setup MinGW
-        uses: actions/setup-mingw@v1
-        with:
-          version: '9.3.0'
+        run: |
+          choco install mingw
+          with:
+            version: '9.3.0'
       - name: Compile Main.c
         run: gcc -o main.exe main.c
       - name: Package Main.exe
