@@ -9,9 +9,8 @@
        steps:
          - uses: actions/checkout@v2
          - name: Setup Mingw
-           uses: actions/setup-mingw@v1
-           with:
-             mingw-configure: 'mingw-w64 --win32 --x86_64 --enable-languages=c,c++'
+           run: |
+             choco install mingw
          - name: Build with Mingw
            run: |
              mingw32-make -f Makefile
