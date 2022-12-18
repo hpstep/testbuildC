@@ -8,8 +8,8 @@ jobs:
     - name: Setup Mingw
       run: |
         choco install mingw
-     # with:
-    #    mingw-configure: 'C:\msys64\mingw64.exe'
+    #  with:
+   #     mingw-configure: 'C:\msys64\mingw64.exe'
     - name: Compile
       run: |
         gcc -o main.exe main.c
@@ -22,12 +22,9 @@ jobs:
         release_name: 'Release v1.0.0'
         draft: false
         prerelease: false
-    - name: Upload Release Asset
-      uses: actions/upload-release-asset@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+    - name: upload
+      uses: actions/upload-artifact@v2
       with:
-        upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: main.exe
-        asset_name: main.exe
-        asset_content_type: application/x-msdownload
+          name: testmain
+          path: |
+            testmain.7z
