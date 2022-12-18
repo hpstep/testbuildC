@@ -9,10 +9,11 @@ jobs:
       - uses: actions/checkout@v2
       - name: Setup MinGW
         run: |
-          choco install mingw --version=9.3.0 --params="'/threads:posix /exception:sjlj'"
-          gcc -v
+          choco install mingw --version 9.3.0 --params="'target=i686-posix-sjlj'"
       - name: Compile Main.c
-        run: gcc -o main.exe main.c
+        run: |
+          gcc -v
+          gcc -o main.exe main.c
       - name: Package Main.exe
         run: 7z a main.7z main.exe
       - name: Create Release
@@ -21,8 +22,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: 'v1.0.0'
-          release_name: 'Release v1.0.0'
+          tag_name: 'v1.0.1'
+          release_name: 'Release v1.0.1'
           draft: false
           prerelease: false
       - name: Upload Main.7z
