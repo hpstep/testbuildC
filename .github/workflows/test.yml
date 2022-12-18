@@ -1,6 +1,10 @@
 name: Compile and Package
 
-on: [push]
+#在push *.md文件后执行任务
+on:
+  push:
+    paths:
+    - '**.md'
 
 jobs:
   build:
