@@ -20,7 +20,7 @@ jobs:
           ls 
       - name: Set Default Compiler
         run: |
-          setx /M PATH "%PATH%;$" + {{ github.workspace }} + "\mingw32\bin"
+          setx /M PATH "%PATH%;" + ${{ github.workspace }} + "\mingw32\bin"
       - name: Compile Main.c
         run: |
           gcc -v
