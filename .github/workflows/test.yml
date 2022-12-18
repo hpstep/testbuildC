@@ -1,9 +1,6 @@
 name: Compile and Package
 
-on:
-  push:
-    branches:
-      - 'master'
+on: [push]
 
 jobs:
   build:
