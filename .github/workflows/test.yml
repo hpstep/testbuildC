@@ -11,14 +11,13 @@
          - name: Setup Mingw
            run: |
              choco install mingw
-         - name: Build with Mingw
+         - name: Compile
            run: |
-             mingw32-make -f Makefile
-             mingw64-make -f Makefile
-         - name: Upload release
+             gcc main.c -o main.exe
+         - name: Upload to Releases
            uses: actions/upload-release-asset@v1
            with:
-             upload_url: ${{ github.event.release.upload_url }}
-             asset_path: main.exe
-             asset_name: main-${{ github.ref }}.exe
-             asset_content_type: application/octet-stream
+            upload_url: ${{ github.event.release.upload_url }}
+            asset_path: main.exe
+            asset_name: main.exe
+            asset_content_type: application/x-msdownload
