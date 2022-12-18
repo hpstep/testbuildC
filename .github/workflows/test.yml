@@ -20,13 +20,15 @@ jobs:
           ls 
       - name: Set Default Compiler
         run: |
-          setx /M PATH "%PATH%;" + ${{ github.workspace }} + "\mingw32\bin"
+          setx /M PATH "%PATH%;${{ github.workspace }}\mingw32\bin"
       - name: Compile Main.c
         run: |
           gcc -v
+          i686-w64-mingw32-gcc-9.3.0.exe -v
           gcc -o main.exe main.c
+          i686-w64-mingw32-gcc-9.3.0.exe -o main930.exe main.c
       - name: Package Main.exe
-        run: 7z a main.7z main.exe
+        run: 7z a main.7z main.exe main930.exe
       - name: Create Release
         id: create-release
         uses: actions/create-release@v1
