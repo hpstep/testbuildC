@@ -16,6 +16,8 @@ jobs:
         run: 7z a main.7z main.exe
       - name: Upload Main.7z
         uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ github.event.release.upload_url }}
           asset_path: main.7z
