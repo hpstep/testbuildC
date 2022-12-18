@@ -24,9 +24,9 @@ jobs:
       - name: Compile Main.c
         run: |
           gcc -v
-          i686-w64-mingw32-gcc-9.3.0 -v
+          ${{ github.workspace }}\mingw32\bin\gcc -v
           gcc -o main.exe main.c
-          i686-w64-mingw32-gcc-9.3.0 -o main930.exe main.c
+          ${{ github.workspace }}\mingw32\bin\gcc -o main930.exe main.c
       - name: Package Main.exe
         run: 7z a main.7z main.exe main930.exe
       - name: Create Release
